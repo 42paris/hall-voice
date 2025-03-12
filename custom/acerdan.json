@@ -1,0 +1,10 @@
+{
+    "welcome":
+    {
+      "mp3": "acerdan/in"
+    },
+    "goodbye":
+    {
+      "mp3": "acerdan/out"
+    }
+}
