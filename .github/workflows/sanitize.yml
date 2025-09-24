@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.head_ref }}
@@ -28,8 +28,7 @@ jobs:
           python3 -m pip install -r requirements.txt
 
       - name: Get changed files
-        #uses: lots0logs/gh-action-get-changed-files@2.1.4
-        uses: Mineflash07/gh-action-get-changed-files@feature/support-pr-target-event # Remove as soon as PR is merged. See https://github.com/lots0logs/gh-action-get-changed-files/pull/22
+        uses: lots0logs/gh-action-get-changed-files@2.2.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -41,7 +40,7 @@ jobs:
       - name: Commit changes
         id: check-sanitize-commit
         continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5 # Do not update to v6, `skip_checkout` got removed (and is being added back in v7).
         with:
           skip_checkout: true
           # branch: ${{ github.event.pull_request.head.sha }}
@@ -73,7 +72,7 @@ jobs:
         run: echo $HOME/files.json | xargs python3 scripts/check-files-size.py -v --
 
       - name: Post comment
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
