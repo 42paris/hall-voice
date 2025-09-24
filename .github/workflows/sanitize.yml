@@ -65,12 +65,12 @@ jobs:
           API42_ID: ${{ secrets.API42_ID }}
           API42_SECRET: ${{ secrets.API42_SECRET }}
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 check-commands.py -v --
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 scripts/check-commands.py -v --
 
       - name: Check if files are under 1 Mo
         id: check-files-size
         continue-on-error: true
-        run: echo $HOME/files.json | xargs python3 check-files-size.py -v --
+        run: echo $HOME/files.json | xargs python3 scripts/check-files-size.py -v --
 
       - name: Post comment
         uses: actions/github-script@v6
