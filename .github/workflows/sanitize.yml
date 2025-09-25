@@ -35,7 +35,7 @@ jobs:
       - name: Run scripts/sanitize.py
         id: check-sanitize
         continue-on-error: true
-        run: echo $HOME/files.json | xargs python3 scripts/sanitize.py -v --db -10.0 --
+        run: python3 scripts/sanitize.py -v --db -10.0 $HOME/files.json
 
       - name: Commit changes
         id: check-sanitize-commit
