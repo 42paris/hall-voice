@@ -17,7 +17,7 @@ PR might be refused if one of those requirements are missing
 You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/files)
 
 ## Staff
-- Buy one RPI and a pretty good audio speaker
+- Buy one RPI
 - In Raspbian, clone this repository
 - Goto the repository and type
   - `pip3 install -r requirements.txt`
@@ -35,7 +35,7 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - `cp config/config.ini.example config/config.ini`
 - Kafka:
   - The RPI must be in bocal's network so it can access Redpanda
-  - You messages must be JSONised like so
+  - You messages MUST be JSONised like so
     - `{"building":"<where>","firstname":"<name>","kind":"<in/out>","login":"<login>"}`
 - You can pre-fill the redis cache with
   - `goinfre-firstname-redis.py`
@@ -56,7 +56,7 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
 - Q: I want to change a song, do I have to buy hallvoice again?
   - A: No
 - Q: What's the TTL (Time to live) for the cache?
-  - A: TTL for redis cache is 6 month, the staff can change it in the config file
+  - A: TTL for redis cache is 6 month, the staff can change it in the config file, or purge by login if asked
 - Q: Code is garbage, can I improve it?
   - I guess... Yes you can? You can try to do a [PR](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork)
 
@@ -75,7 +75,7 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - it consume ~300M of disk space
   - 39888 TTS cached (2493 firstname * 16 welcome and goodbye message)
   - ~5300 login is used to cache firstnames
-- Volume is at maximum in `alsamixer`
+- The RPI has no soundcard whatsoever, we use Dante to play the mp3 across the network. Yes, the speaker works via PoE and is connected to the network.
 
 # Change logs
 - Hallvoice V2
@@ -116,7 +116,11 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - More print() and TTS for debugging
 - Hallvoice V3.3.4
   - Moved and modified print()
+- Hallvoice V3.4
+  - Changed the way mp3 are played, from pygame to pw-play
+  - When `--log-in-file` is used to log the output to file, it now also print logs to `stdout`
+  - Changed the way intra API is handled
 
 ###### Made with love by 42Paris team SI
 
-###### Soon, Hallvoice V4 in Golang!
+###### Soon™, Hallvoice V4 in Golang!
