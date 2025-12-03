@@ -1,4 +1,5 @@
 import sys
+import datetime
 from confluent_kafka import Consumer, KafkaException, KafkaError, OFFSET_END
 from Messages import Messages
 
@@ -24,7 +25,7 @@ class Kafka(object):
         def my_assign(consumer, partitions):
             for p in partitions:
                 p.offset = OFFSET_END
-            print('assign', partitions)
+            print(f'[{datetime.datetime.now()}][Kafka] assign', partitions)
             consumer.assign(partitions)
 
         # Subscribe to the topic from latest message
