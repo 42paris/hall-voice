@@ -19,16 +19,20 @@ class API42(object):
             # Return firstname if it is in redis cache
             return str(cached_data.decode('utf-8'))
         else:
-            print(f"[{datetime.datetime.now()}] API cache data not found for {login}, putting in cache")
-            intra = self.api.get(url)
-            if intra is not None and intra.status_code == 200:
-                # Get the usual name
-                firstname = intra.json()["usual_first_name"]
-                # If there is no usual name, take the first_name
-                if firstname is None:
-                    firstname = intra.json()["first_name"]
-                    # Putting in redis cache
-                self.redis.set(f"login: {login}", firstname, ex=self.redis_ttl)  # Cache the firstname for 6 month
-                return firstname
-            else:
+            try:
+                print(f"[{datetime.datetime.now()}] API cache data not found for {login}, putting in cache")
+                intra = self.api.get(url)
+                if intra is not None and intra.status_code == 200:
+                    # Get the usual name
+                    firstname = intra.json()["usual_first_name"]
+                    # If there is no usual name, take the first_name
+                    if firstname is None:
+                        firstname = intra.json()["first_name"]
+                        # Putting in redis cache
+                    self.redis.set(f"login: {login}", firstname, ex=self.redis_ttl)  # Cache the firstname for 6 month
+                    return firstname
+                else:
+                    return "toi"
+            except Exception as e:
+                print(f"[{datetime.datetime.now()}] API exception excepted, {e}")
                 return "toi"
