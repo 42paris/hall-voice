@@ -1,6 +1,7 @@
 import os
 import time
 import requests
+import datetime
 
 requests.packages.urllib3.disable_warnings()
 
@@ -25,12 +26,12 @@ class IntraAPIClient(object):
             "grant_type": "client_credentials",
             "scope": self.scopes,
         }
-        print("Attempting to get a token from intranet")
+        print(f"[{datetime.datetime.now()}][IntraAPI] Attempting to get a token from intranet")
         self.token = "token_dummy"
         res = self.request(requests.post, self.token_url, params=request_token_payload)
         rj = res.json()
         self.token = rj["access_token"]
-        print(f"Got new acces token from intranet {self.token}")
+        print(f"[{datetime.datetime.now()}][IntraAPI] Got new acces token from intranet {self.token}")
 
     def _make_authed_header(self, header={}):
         ret = {"Authorization": f"Bearer {self.token}"}
@@ -45,7 +46,7 @@ class IntraAPIClient(object):
             url = f"{self.api_url}/{url}"
 
         while True:
-            print(f"Attempting a request to {url}")
+            print(f"[{datetime.datetime.now()}][IntraAPI] Attempting a request to {url}")
 
             res = method(
                 url,
@@ -56,7 +57,7 @@ class IntraAPIClient(object):
 
             rc = res.status_code
             if rc == 500:
-                print(f"Server error {str(rc)}\n{str(res.content)}")
+                print(f"[{datetime.datetime.now()}][IntraAPI] Server error {str(rc)}\n{str(res.content)}")
                 time.sleep(1)
                 continue
             if rc == 401:
@@ -65,18 +66,18 @@ class IntraAPIClient(object):
                     desc, _ = desc.split('"')
                     if desc == "The access token expired" or desc == "The access token is invalid":
                         if self.token != "token_dummy":
-                            print(f"Server said our token {self.token} {desc.split(' ')[-1]}")
+                            print(f"[{datetime.datetime.now()}][IntraAPI] Server said our token {self.token} {desc.split(' ')[-1]}")
                         if tries < 5:
-                            print("Renewing token")
+                            print(f"[{datetime.datetime.now()}][IntraAPI] Renewing token")
                             tries += 1
                             self.request_token()
                             time.sleep(1)
                             continue
                         else:
-                            print("Tried to renew token too many times, something's wrong")
+                            print(f"[{datetime.datetime.now()}][IntraAPI] Tried to renew token too many times, something's wrong")
 
             if rc == 429:
-                print(f"Rate limit exceeded - Waiting {res.headers['Retry-After']}s before requesting again")
+                print(f"[{datetime.datetime.now()}][IntraAPI] Rate limit exceeded - Waiting {res.headers['Retry-After']}s before requesting again")
                 time.sleep(float(res.headers['Retry-After']))
                 continue
 
@@ -87,7 +88,7 @@ class IntraAPIClient(object):
                 else:
                     raise ValueError(f"\n{res.headers}\n\nServerError. Error {str(rc)}\n{str(res.content)}\n{req_data}")
 
-            print(f"Request to {url} returned with code {rc}")
+            print(f"[{datetime.datetime.now()}][IntraAPI] Request to {url} returned with code {rc}")
             return res
 
     def get(self, url, headers={}, **kwargs):
