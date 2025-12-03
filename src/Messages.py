@@ -30,7 +30,7 @@ class Messages(object):
             return
         if self.buildingName != data["building"]:
             return
-        print(f"[{datetime.datetime.now()}] NEW MESSAGE: {msg}")
+        print(f"[{datetime.datetime.now()}][HV] NEW MESSAGE: {msg}")
         kind: str = data['kind']
         login: str = data['login']
         firstname: str = ""
@@ -40,7 +40,7 @@ class Messages(object):
             firstname: str = data["firstname"]
         jsonFile: str = (self.customPath + login + ".json")
         if os.path.isfile(jsonFile):
-            print(f"[{datetime.datetime.now()}] Custom HallVoice for " + login + ": " + jsonFile)
+            print(f"[{datetime.datetime.now()}][HV] Custom HallVoice for " + login + ": " + jsonFile)
             self.playCustomSound(kind, jsonFile, firstname)
             return
         else:
@@ -61,19 +61,19 @@ class Messages(object):
                                     + "/"
                                     + choice(os.listdir(self.mp3Path + j[kind]["mp3"]))
                                 )
-                                print(f"[{datetime.datetime.now()}] Playing {customMP3}")
+                                print(f"[{datetime.datetime.now()}][HV] Playing {customMP3}")
                                 self.playFile(customMP3)
                             elif os.path.isfile(self.mp3Path + j[kind]["mp3"]) is True:
                                 customMP3 = self.mp3Path + j[kind]["mp3"]
-                                print(f"[{datetime.datetime.now()}] Playing {customMP3}")
+                                print(f"[{datetime.datetime.now()}][HV] Playing {customMP3}")
                                 self.playFile(customMP3)
                             else:
                                 self.playError("Error while loading a random mp3 file, please contact staff member")
-                                print(f"[{datetime.datetime.now()}] Error for custom hallvoice {jsonFile}"
+                                print(f"[{datetime.datetime.now()}][HV] Error for custom hallvoice {jsonFile}"
                                       f", invalid path")
                                 return
                         except Exception as e:
-                            print(f"[{datetime.datetime.now()}] Error while playing a custom song with pw-play:\n{e}")
+                            print(f"[{datetime.datetime.now()}][HV] Error while playing a custom song with pw-play:\n{e}")
                             self.playError("Error while playing a custom song, please contact staff member")
                     elif "txt" in j[kind]:
                         lang: str = j[kind]["lang"] if "lang" in j[kind] else "fr"
@@ -83,13 +83,13 @@ class Messages(object):
                             self.say(j[kind]["txt"], lang)
                 else:
                     self.playError(f"Invalide JSON file {jsonFile}, please check your PR")
-                    print(f"[{datetime.datetime.now()}] Invalide JSON file {jsonFile}, kind in/out not found")
+                    print(f"[{datetime.datetime.now()}][HV] Invalide JSON file {jsonFile}, kind in/out not found")
         except FileNotFoundError as e:
             self.playError("Error while loading your custom JSON, please contact staff member")
-            print(f"[{datetime.datetime.now()}] Custom HallVoice for {firstname} not found:\n{e}")
+            print(f"[{datetime.datetime.now()}][HV] Custom HallVoice for {firstname} not found:\n{e}")
         except Exception as e:
             self.playError("A Serious error happend, please contact staff member")
-            print(f"[{datetime.datetime.now()}] Random Exception at playCustomSound():\n{e}")
+            print(f"[{datetime.datetime.now()}][HV] Random Exception at playCustomSound():\n{e}")
 
     def genericMessage(self, firstname: str, kind: str) -> None:
         tts: str = ""
@@ -102,14 +102,14 @@ class Messages(object):
     def say(self, txt: str, lang: str) -> None:
         mp3_fp = BytesIO()
         if txt is not None and txt != "":
-            print(f"[{datetime.datetime.now()}] Playing TTS: {txt}")
+            print(f"[{datetime.datetime.now()}][HV] Playing TTS: {txt}")
             cache = self.redis.get(txt + lang)  # Get the TTS from cache
             if cache:  # If TTS is cached, play it
-                print(f"[{datetime.datetime.now()}] TTS cache getted!")
+                print(f"[{datetime.datetime.now()}][HV] TTS cache getted!")
                 mp3_fp.write(cache)
                 self.playMP3(mp3_fp)
             else:  # If TTS is NOT cached, cache it AND play it...
-                print(f"[{datetime.datetime.now()}] TTS cache not found, putting in cache")
+                print(f"[{datetime.datetime.now()}][HV] TTS cache not found, putting in cache")
                 try:
                     # Generate speech using gTTS and save to a BytesIO object
                     tts = gTTS(text=txt, lang=lang)
@@ -123,13 +123,13 @@ class Messages(object):
                     mp3_fp = BytesIO(data)
                     self.playMP3(mp3_fp)
                 except gTTSError as e:  # If we break gTTS API with rate-limit
-                    print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
+                    print(f"[{datetime.datetime.now()}][HV] HallvoiceERROR TTS error:\n{e}")
                     # Only try to play if we actually have data
                     if mp3_fp.getbuffer().nbytes > 0:
                         self.playMP3(mp3_fp)
         else:
             self.playError("Error while generating TTS message, please contact staff member")
-            print(f"[{datetime.datetime.now()}] TTS messages generation error for txt: {txt}")
+            print(f"[{datetime.datetime.now()}][HV] TTS messages generation error for txt: {txt}")
 
     @staticmethod
     def playMP3(mp3: BytesIO | bytes, volume: float = 0.5) -> None:
@@ -150,7 +150,7 @@ class Messages(object):
         # Try to acquire the playback lock with a 10s timeout
         acquired = Messages._play_lock.acquire(timeout=Messages._play_timeout_sec)
         if not acquired:
-            print(f"[{datetime.datetime.now()}] Playback dropped: queue wait > {Messages._play_timeout_sec}s")
+            print(f"[{datetime.datetime.now()}][HV] Playback dropped: queue wait > {Messages._play_timeout_sec}s")
             return
 
         tmp_in = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
@@ -172,7 +172,7 @@ class Messages(object):
             subprocess.run(["pw-play", tmp_out.name], check=True)
 
         except subprocess.CalledProcessError as e:
-            print(f"[{datetime.datetime.now()}] Error during sox or pw-play:\n{e}")
+            print(f"[{datetime.datetime.now()}][HV] Error during sox or pw-play:\n{e}")
 
         finally:
             # cleanup temp files
@@ -193,12 +193,12 @@ class Messages(object):
         # Try to acquire the playback lock with a 10s timeout
         acquired = Messages._play_lock.acquire(timeout=Messages._play_timeout_sec)
         if not acquired:
-            print(f"[{datetime.datetime.now()}] Playback dropped: queue wait > {Messages._play_timeout_sec}s")
+            print(f"[{datetime.datetime.now()}][HV] Playback dropped: queue wait > {Messages._play_timeout_sec}s")
             return
         try:
             subprocess.run(["pw-play", path], check=True)
         except subprocess.CalledProcessError as e:
-            print(f"[{datetime.datetime.now()}] Error while playing file {path} with pw-play:\n{e}")
+            print(f"[{datetime.datetime.now()}][HV] Error while playing file {path} with pw-play:\n{e}")
         finally:
             Messages._play_lock.release()
 
@@ -206,11 +206,11 @@ class Messages(object):
         mp3_fp = BytesIO()
         cache = self.redis.get(f"HallvoiceERROR+{message}")
         if cache:
-            print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS cached")
+            print(f"[{datetime.datetime.now()}][HV] HallvoiceERROR TTS cached")
             mp3_fp.write(cache)
             self.playMP3(mp3_fp)
         else:
-            print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS not cached, caching him")
+            print(f"[{datetime.datetime.now()}][HV] HallvoiceERROR TTS not cached, caching him")
             try:
                 tts = gTTS(text=message, lang="en")
                 tts.write_to_fp(mp3_fp)
@@ -219,4 +219,4 @@ class Messages(object):
                 self.redis.set(f"HallvoiceERROR+{message}", data, ex=self.redis_ttl)
                 self.playMP3(data)
             except gTTSError as e:
-                print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
+                print(f"[{datetime.datetime.now()}][HV] HallvoiceERROR TTS error:\n{e}")
