@@ -120,6 +120,9 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - Changed the way mp3 are played, from pygame to pw-play
   - When `--log-in-file` is used to log the output to file, it now also print logs to `stdout`
   - Changed the way intra API is handled
+- Hallvoice V3.4.1
+  - Volume up to 0.7
+  - fixed the logging to file feature
 
 ###### Made with love by 42Paris team SI
 
