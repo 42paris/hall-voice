@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "akrings/in"
+    },
+    "goodbye": {
+        "mp3": "akrings/out"
+    }
+}
