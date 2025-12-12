@@ -132,7 +132,7 @@ class Messages(object):
             print(f"[{datetime.datetime.now()}][HV] TTS messages generation error for txt: {txt}")
 
     @staticmethod
-    def playMP3(mp3: BytesIO | bytes, volume: float = 0.5) -> None:
+    def playMP3(mp3: BytesIO | bytes, volume: float = 0.7) -> None:
         """
         Play MP3 data using pw-play, reducing volume with sox.
         Ensures:
