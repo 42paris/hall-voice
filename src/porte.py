@@ -26,13 +26,13 @@ if __name__ == "__main__":
         print("\tYou can also add --log-in-file in the end to output log in file")
         exit(0)
     elif sys.argv[1] is not None and os.path.exists(sys.argv[1]):
+        conf = Conf(sys.argv[1])
         date = datetime.datetime.now()
         date_str = date.strftime("%Y%m%d-%H%M%S")
         if '--log-in-file' in sys.argv:
-            f = open(f"logs/{date_str}_hallvoice.log", "w", buffering=1)
+            f = open(f"{conf.pathLogs}/{date_str}_hallvoice.log", "w", buffering=1)
             sys.stdout = Tee(sys.stdout, f)
             sys.stderr = Tee(sys.stderr, f)
-        conf = Conf(sys.argv[1])
         api = API42(conf)
         consumer = Kafka(conf, api)
         consumer.consume_messages()
