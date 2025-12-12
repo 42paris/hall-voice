@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "igrousso/in"
+  },
+  "goodbye":
+  {
+    "mp3": "igrousso/out"
+  }
+}
