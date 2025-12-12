@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "wisedeau/in"
+    },
+    "goodbye": {
+        "mp3": "wisedeau/out"
+    }
+}

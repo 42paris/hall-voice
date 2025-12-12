@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "jocarras/in"
+    },
+    "goodbye": {
+        "mp3": "jocarras/out"
+    }
+}
