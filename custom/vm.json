@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "vm/in"
+    },
+    "goodbye": {
+        "mp3": "vm/out"
+    }
+}
