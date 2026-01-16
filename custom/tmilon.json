@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"tmilon/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"tmilon/sortie/"
-	}
+    "welcome": {
+        "mp3": "tmilon/in/"
+    },
+    "goodbye": {
+        "mp3": "tmilon/out/"
+    }
 }

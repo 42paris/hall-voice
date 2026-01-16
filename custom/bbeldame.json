@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "bbeldame/in/"
-  },
-  "goodbye":
-  {
-    "mp3": "bbeldame/out/"
-  }
+    "welcome": {
+        "mp3": "bbeldame/in/"
+    },
+    "goodbye": {
+        "mp3": "bbeldame/out/"
+    }
 }

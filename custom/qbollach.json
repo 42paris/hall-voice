@@ -1,10 +1,8 @@
 {
-		"welcome":
-		{
-				"mp3":"qbollach/qbollach_entree.mp3"
-		},
-		"goodbye":
-		{
-				"mp3":"qbollach/qbollach.mp3"
-		}
+    "welcome": {
+        "mp3": "qbollach/qbollach_in.mp3"
+    },
+    "goodbye": {
+        "mp3": "qbollach/qbollach.mp3"
+    }
 }

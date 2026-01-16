@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"unicolai/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"unicolai/sortie/"
-	}
+    "welcome": {
+        "mp3": "unicolai/in/"
+    },
+    "goodbye": {
+        "mp3": "unicolai/out/"
+    }
 }

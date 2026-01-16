@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "aasli/in/"
+    },
+    "goodbye": {
+        "mp3": "aasli/out/"
+    }
+}

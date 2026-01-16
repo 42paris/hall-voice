@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "phmoulin/in/"
-	},
-	"goodbye":
-	{
-		"mp3": "phmoulin/out/"
-	}
+    "welcome": {
+        "mp3": "phmoulin/in/"
+    },
+    "goodbye": {
+        "mp3": "phmoulin/out/"
+    }
 }

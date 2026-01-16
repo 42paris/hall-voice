@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"jcamhi/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"jcamhi/out/"
-	}
+    "welcome": {
+        "mp3": "jcamhi/in/"
+    },
+    "goodbye": {
+        "mp3": "jcamhi/out/"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"fventuri/"
-	},
-	"goodbye":
-	{
-		"mp3":"fventuri/"
-	}
+    "welcome": {
+        "mp3": "fventuri/"
+    },
+    "goodbye": {
+        "mp3": "fventuri/"
+    }
 }

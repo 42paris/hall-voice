@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-        "mp3":"alansiva/entree/"
+    "welcome": {
+        "mp3": "alansiva/in/"
     },
-    "goodbye":
-    {
-        "mp3":"alansiva/sortie/"
+    "goodbye": {
+        "mp3": "alansiva/out/"
     }
 }

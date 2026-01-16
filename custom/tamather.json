@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "tamather/in"
+    },
+    "goodbye": {
+        "mp3": "tamather/out"
+    }
+}

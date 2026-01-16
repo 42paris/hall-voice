@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"etieberg/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"etieberg/out/"
-	}
+    "welcome": {
+        "mp3": "etieberg/in/"
+    },
+    "goodbye": {
+        "mp3": "etieberg/out/"
+    }
 }

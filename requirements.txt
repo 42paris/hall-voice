@@ -1,3 +1,8 @@
 sox
 requests_oauthlib
 oauthlib
+gtts
+confluent-kafka
+redis
+requests
+pygame

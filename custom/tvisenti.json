@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"tvisenti/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"tvisenti/out/"
-	}
+    "welcome": {
+        "mp3": "tvisenti/in/"
+    },
+    "goodbye": {
+        "mp3": "tvisenti/out/"
+    }
 }

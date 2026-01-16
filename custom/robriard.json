@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"robriard/in"
-	},
-	"goodbye":
-	{
-		"mp3":"robriard/out"
-	}
+    "welcome": {
+        "mp3": "robriard/in"
+    },
+    "goodbye": {
+        "mp3": "robriard/out"
+    }
 }

@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "mbenjell/in"
-  },
-  "goodbye":
-  {
-    "mp3": "mbenjell/out"
-  }
+    "welcome": {
+        "mp3": "mbenjell/in"
+    },
+    "goodbye": {
+        "mp3": "mbenjell/out"
+    }
 }

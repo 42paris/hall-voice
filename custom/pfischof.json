@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "pfischof/in"
+  },
+  "goodbye":
+  {
+    "mp3": "pfischof/out"
+  }
+}

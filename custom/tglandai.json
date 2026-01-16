@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"tglandai/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"tglandai/sortie/"
-	}
+    "welcome": {
+        "mp3": "tglandai/in/"
+    },
+    "goodbye": {
+        "mp3": "tglandai/out/"
+    }
 }

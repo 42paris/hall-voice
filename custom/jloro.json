@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"jloro/mentalist.mp3"
-	},
-	"goodbye":
-	{
-		"mp3":"jloro/Baby Shark.mp3"
-	}
+    "welcome": {
+        "mp3": "jloro/mentalist.mp3"
+    },
+    "goodbye": {
+        "mp3": "jloro/Baby Shark.mp3"
+    }
 }

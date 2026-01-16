@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"bclerc/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"bclerc/sortie/"
-	}
+    "welcome": {
+        "mp3": "bclerc/in/"
+    },
+    "goodbye": {
+        "mp3": "bclerc/out/"
+    }
 }

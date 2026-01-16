@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "efouille/in"
-	},
-	"goodbye":
-	{
-		"mp3": "efouille/out"
-	}
+    "welcome": {
+        "mp3": "efouille/in"
+    },
+    "goodbye": {
+        "mp3": "efouille/out"
+    }
 }

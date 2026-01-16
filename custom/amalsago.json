@@ -1,12 +1,8 @@
 {
-	"welcome":
-	{
-		"txt":"Bienvenue Aslane",
-		"lang":"fr"
-	},
-	"goodbye":
-	{
-		"txt":"Revient vite Aslane",
-		"lang":"fr"
-	}
+    "welcome": {
+        "mp3": "amalsago/in"
+    },
+    "goodbye": {
+        "mp3": "amalsago/out"
+    }
 }

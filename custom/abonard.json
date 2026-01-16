@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "abonard/in/"
+    },
+    "goodbye": {
+        "mp3": "abonard/out/"
+    }
+}

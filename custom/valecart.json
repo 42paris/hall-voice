@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"valecart/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"valecart/sortie/"
-	}
+    "welcome": {
+        "mp3": "valecart/in/"
+    },
+    "goodbye": {
+        "mp3": "valecart/out/"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"fkoehler/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"fkoehler/out/"
-	}
+    "welcome": {
+        "mp3": "fkoehler/in/"
+    },
+    "goodbye": {
+        "mp3": "fkoehler/out/"
+    }
 }

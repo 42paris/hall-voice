@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"majacque/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"majacque/out/"
-	}
+    "welcome": {
+        "mp3": "majacque/in/"
+    },
+    "goodbye": {
+        "mp3": "majacque/out/"
+    }
 }

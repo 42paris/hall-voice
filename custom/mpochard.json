@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "mpochard/in"
+    },
+    "goodbye": {
+        "mp3": "mpochard/out"
+    }
+}

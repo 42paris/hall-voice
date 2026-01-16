@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"fleitz/in"
-	},
-	"goodbye":
-	{
-		"mp3":"fleitz/out"
-	}
+    "welcome": {
+        "mp3": "fleitz/in"
+    },
+    "goodbye": {
+        "mp3": "fleitz/out"
+    }
 }

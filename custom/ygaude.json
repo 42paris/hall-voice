@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"youva/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"youva/out/"
-	}
+    "welcome": {
+        "mp3": "ygaude/in/"
+    },
+    "goodbye": {
+        "mp3": "ygaude/out/"
+    }
 }

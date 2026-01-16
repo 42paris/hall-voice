@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3":"clhenry/clhenry.mp3"
-  },
-  "goodbye":
-  {
-    "mp3":"clhenry/clhenry.mp3"
-  }
+    "welcome": {
+        "mp3": "clhenry/clhenry.mp3"
+    },
+    "goodbye": {
+        "mp3": "clhenry/clhenry.mp3"
+    }
 }

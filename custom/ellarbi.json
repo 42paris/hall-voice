@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-        "mp3":"ellarbi/in"
+    "welcome": {
+        "mp3": "ellarbi/in"
     },
-    "goodbye":
-    {
-        "mp3":"ellarbi/out"
+    "goodbye": {
+        "mp3": "ellarbi/out"
     }
 }

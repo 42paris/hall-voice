@@ -1,4 +1,8 @@
 {
-	"welcome":{"mp3":"afeuerst/in"},
-	"goodbye":{"mp3":"afeuerst/out"}
+    "welcome": {
+        "mp3": "afeuerst/in"
+    },
+    "goodbye": {
+        "mp3": "afeuerst/out"
+    }
 }

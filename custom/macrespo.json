@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "macrespo/"
-	},
-	"goodbye":
-	{
-		"mp3": "macrespo/"
-	}
+    "welcome": {
+        "mp3": "macrespo/"
+    },
+    "goodbye": {
+        "mp3": "macrespo/"
+    }
 }

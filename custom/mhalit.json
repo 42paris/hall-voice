@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"mhalit/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"mhalit/out/"
-	}
+    "welcome": {
+        "mp3": "mhalit/in/"
+    },
+    "goodbye": {
+        "mp3": "mhalit/out/"
+    }
 }

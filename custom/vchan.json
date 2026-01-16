@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "vchan/in/"
+    },
+    "goodbye": {
+        "mp3": "vchan/out/"
+    }
+}

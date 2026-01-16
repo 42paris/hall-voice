@@ -1,8 +1,8 @@
 {
-    "welcome": {                                                                                                                                                                             
-        "mp3": "dboyer/in" 
-    },                                                                                                                                                                                       
-    "goodbye": {                                                                                                                                                                             
+    "welcome": {
+        "mp3": "dboyer/in"
+    },
+    "goodbye": {
         "mp3": "dboyer/out"
-    }  
+    }
 }

@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "mmaj/in/"
-  },
-  "goodbye":
-  {
-    "mp3": "mmaj/out/"
-  }
+    "welcome": {
+        "mp3": "mmaj/in/"
+    },
+    "goodbye": {
+        "mp3": "mmaj/out/"
+    }
 }

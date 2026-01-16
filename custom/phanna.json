@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3":"philippe.mp3"
-  },
-  "goodbye":
-  {
-    "mp3":"philippe.mp3"
-  }
+    "welcome": {
+        "mp3": "phanna/in_out"
+    },
+    "goodbye": {
+        "mp3": "phanna/in_out"
+    }
 }

@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "romontei/enter"
-  },
-  "goodbye":
-  {
-    "mp3": "romontei/exit"
-  }
+    "welcome": {
+        "mp3": "romontei/enter"
+    },
+    "goodbye": {
+        "mp3": "romontei/exit"
+    }
 }

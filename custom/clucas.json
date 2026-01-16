@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"clucas/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"clucas/sortie/"
-	}
+    "welcome": {
+        "mp3": "clucas/in/"
+    },
+    "goodbye": {
+        "mp3": "clucas/out/"
+    }
 }

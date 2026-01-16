@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"tbleuse/in"
-	},
-	"goodbye":
-	{
-		"mp3":"tbleuse/out"
-	}
+    "welcome": {
+        "mp3": "tbleuse/in"
+    },
+    "goodbye": {
+        "mp3": "tbleuse/out"
+    }
 }

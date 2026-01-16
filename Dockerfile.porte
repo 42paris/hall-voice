@@ -1,0 +1,10 @@
+FROM debian:bookworm-slim
+LABEL authors="julien451"
+
+COPY requirements.txt .
+COPY config/asound.conf /etc/asound.conf
+RUN apt-get update --allow-releaseinfo-change
+RUN apt-get install alsa-utils python3-pip libglib2.0-0 libsm6 libxrender1 libxext6 --no-install-suggests --no-install-recommends -y
+RUN pip3 install --no-cache -r requirements.txt --break-system-packages
+
+ENTRYPOINT ["python3", "/hallvoice/porte.py", "/hallvoice/config/config.ini", "--docker"]

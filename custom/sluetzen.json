@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "sluetzen/in"
+    },
+    "goodbye": {
+        "mp3": "sluetzen/out"
+    }
+}

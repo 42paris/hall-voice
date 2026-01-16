@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"jpeguet/welcome/"
-	},
-	"goodbye":
-	{
-		"mp3":"jpeguet/goodbye/"
-	}
+    "welcome": {
+        "mp3": "jpeguet/welcome/"
+    },
+    "goodbye": {
+        "mp3": "jpeguet/goodbye/"
+    }
 }

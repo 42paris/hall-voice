@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "mlormois/in"
-  },
-  "goodbye":
-  {
-    "mp3": "mlormois/out"
-  }
+    "welcome": {
+        "mp3": "mlormois/in"
+    },
+    "goodbye": {
+        "mp3": "mlormois/out"
+    }
 }

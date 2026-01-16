@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "rmechety/in"
+    "welcome": {
+        "mp3": "rmechety/in"
     },
-    "goodbye":
-    {
-      "mp3": "rmechety/out"
+    "goodbye": {
+        "mp3": "rmechety/out"
     }
-  }
+}

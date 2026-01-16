@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"lfabbro/welcome/"
-	},
-	"goodbye":
-	{
-		"mp3":"lfabbro/goodbye/"
-	}
+    "welcome": {
+        "mp3": "lfabbro/welcome/"
+    },
+    "goodbye": {
+        "mp3": "lfabbro/goodbye/"
+    }
 }

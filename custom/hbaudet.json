@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"hbaudet/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"hbaudet/sortie/"
-	}
+    "welcome": {
+        "mp3": "hbaudet/in/"
+    },
+    "goodbye": {
+        "mp3": "hbaudet/out/"
+    }
 }

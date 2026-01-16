@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "vintran/in/"
+    },
+    "goodbye": {
+        "mp3": "vintran/out/"
+    }
+}

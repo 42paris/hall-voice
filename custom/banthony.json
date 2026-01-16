@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"banthony/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"banthony/sortie/"
-	}
+    "welcome": {
+        "mp3": "banthony/in/"
+    },
+    "goodbye": {
+        "mp3": "banthony/out/"
+    }
 }

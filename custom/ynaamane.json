@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"ynaamane/in"
-	},
-	"goodbye":
-	{
-		"mp3":"ynaamane/out"
-	}
+    "welcome": {
+        "mp3": "ynaamane/in"
+    },
+    "goodbye": {
+        "mp3": "ynaamane/out"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "abemorea/entree"
-	},
-	"goodbye":
-	{
-		"mp3": "abemorea/sortie"
-	}
+    "welcome": {
+        "mp3": "abemorea/in"
+    },
+    "goodbye": {
+        "mp3": "abemorea/out"
+    }
 }

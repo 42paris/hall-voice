@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"vvaucoul/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"vvaucoul/out/"
-	}
+    "welcome": {
+        "mp3": "vvaucoul/in/"
+    },
+    "goodbye": {
+        "mp3": "vvaucoul/out/"
+    }
 }

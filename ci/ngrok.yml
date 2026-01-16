@@ -1,5 +1,0 @@
-region: eu
-json_resolver_url: ""
-dns_resolver_ips: []
-log: stdout
-console_ui: "false"

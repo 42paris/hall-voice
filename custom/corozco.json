@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "corozco/in"
-  },
-  "goodbye":
-  {
-    "mp3": "corozco/out"
-  }
+    "welcome": {
+        "mp3": "corozco/in"
+    },
+    "goodbye": {
+        "mp3": "corozco/out"
+    }
 }

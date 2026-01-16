@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"yarypert/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"yarypert/sortie/"
-	}
+    "welcome": {
+        "mp3": "yarypert/in/"
+    },
+    "goodbye": {
+        "mp3": "yarypert/out/"
+    }
 }

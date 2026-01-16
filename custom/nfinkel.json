@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"nfinkel/spawn/"
-	},
-	"goodbye":
-	{
-		"mp3":"nfinkel/depop/"
-	}
+    "welcome": {
+        "mp3": "nfinkel/spawn/"
+    },
+    "goodbye": {
+        "mp3": "nfinkel/depop/"
+    }
 }

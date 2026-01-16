@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "cmois/in"
+    },
+    "goodbye": {
+        "mp3": "cmois/out"
+    }
+}

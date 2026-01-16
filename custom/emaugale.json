@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-        "mp3":"emaugale/in"
+    "welcome": {
+        "mp3": "emaugale/in"
     },
-    "goodbye":
-    {
-        "mp3":"emaugale/out"
+    "goodbye": {
+        "mp3": "emaugale/out"
     }
 }

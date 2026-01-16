@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "maabou-h/in"
-  },
-  "goodbye":
-  {
-    "mp3": "maabou-h/out"
-  }
+    "welcome": {
+        "mp3": "maabou-h/in"
+    },
+    "goodbye": {
+        "mp3": "maabou-h/out"
+    }
 }
