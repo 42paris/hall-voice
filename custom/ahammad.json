@@ -1,10 +1,10 @@
 {
-    "welcome":
-    {
-      "mp3": "ahammad/in"
-    },
-    "goodbye":
-    {
-      "mp3": "ahammad/out"
-    }
+  "welcome":
+  {
+    "mp3": "ahammad/in"
+  },
+  "goodbye":
+  {
+    "mp3": "ahammad/out"
   }
+}
