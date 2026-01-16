@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "vdarmaya/in/"
-	},
-	"goodbye":
-	{
-		"mp3": "vdarmaya/out/"
-	}
+    "welcome": {
+        "mp3": "vdarmaya/in/"
+    },
+    "goodbye": {
+        "mp3": "vdarmaya/out/"
+    }
 }

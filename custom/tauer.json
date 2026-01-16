@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "tauer/in/"
+    },
+    "goodbye": {
+        "mp3": "tauer/out/"
+    }
+}

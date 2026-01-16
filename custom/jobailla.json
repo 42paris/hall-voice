@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"jobailla/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"jobailla/out/"
-	}
+    "welcome": {
+        "mp3": "jobailla/in/"
+    },
+    "goodbye": {
+        "mp3": "jobailla/out/"
+    }
 }

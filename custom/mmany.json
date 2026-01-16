@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "mmany/entree"
-	},
-	"goodbye":
-	{
-		"mp3": "mmany/sortie"
-	}
+    "welcome": {
+        "mp3": "mmany/in"
+    },
+    "goodbye": {
+        "mp3": "mmany/out"
+    }
 }

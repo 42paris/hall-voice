@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "thboura/entree"
-	},
-	"goodbye":
-	{
-		"mp3": "thboura/sortie"
-	}
+    "welcome": {
+        "mp3": "thboura/in"
+    },
+    "goodbye": {
+        "mp3": "thboura/out"
+    }
 }

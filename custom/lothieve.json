@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"lothieve/in"
-	},
-	"goodbye":
-	{
-		"mp3":"lothieve/out"
-	}
+    "welcome": {
+        "mp3": "lothieve/in"
+    },
+    "goodbye": {
+        "mp3": "lothieve/out"
+    }
 }

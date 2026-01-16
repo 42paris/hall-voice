@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"mbeilles/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"mbeilles/out/"
-	}
+    "welcome": {
+        "mp3": "mbeilles/in/"
+    },
+    "goodbye": {
+        "mp3": "mbeilles/out/"
+    }
 }

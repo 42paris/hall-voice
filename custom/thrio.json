@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "thrio/in"
+    },
+    "goodbye": {
+        "mp3": "thrio/out"
+    }
+}

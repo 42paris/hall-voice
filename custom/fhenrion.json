@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "fhenrion"
-  },
-  "goodbye":
-  {
-    "mp3": "fhenrion"
-  }
+    "welcome": {
+        "mp3": "fhenrion"
+    },
+    "goodbye": {
+        "mp3": "fhenrion"
+    }
 }

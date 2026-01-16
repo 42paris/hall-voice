@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "lusehair/in"
-  },
-  "goodbye":
-  {
-    "mp3": "lusehair/out"
-  }
+    "welcome": {
+        "mp3": "lusehair/in"
+    },
+    "goodbye": {
+        "mp3": "lusehair/out"
+    }
 }

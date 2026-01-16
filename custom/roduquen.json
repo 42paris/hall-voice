@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "roduquen/in"
-	},
-	"goodbye":
-	{
-		"mp3":"roduquen/out"
-	}
+    "welcome": {
+        "mp3": "roduquen/in"
+    },
+    "goodbye": {
+        "mp3": "roduquen/out"
+    }
 }

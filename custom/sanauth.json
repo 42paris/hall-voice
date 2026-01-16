@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "sanauth/in/"
+    },
+    "goodbye": {
+        "mp3": "sanauth/out/"
+    }
+}

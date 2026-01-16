@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "lembas/in"
+    },
+    "goodbye": {
+        "mp3": "lembas/out"
+    }
+}

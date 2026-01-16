@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3":"charly.mp3"
-  },
-  "goodbye":
-  {
-    "mp3":"charly.mp3"
-  }
+    "welcome": {
+        "mp3": "charly.mp3"
+    },
+    "goodbye": {
+        "mp3": "charly.mp3"
+    }
 }

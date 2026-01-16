@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "lmartin/in"
-  },
-  "goodbye":
-  {
-    "mp3": "lmartin/out"
-  }
+    "welcome": {
+        "mp3": "lmartin/in"
+    },
+    "goodbye": {
+        "mp3": "lmartin/out"
+    }
 }

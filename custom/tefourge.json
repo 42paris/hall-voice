@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "tefourge/entree"
-	},
-	"goodbye":
-	{
-		"mp3": "tefourge/sortie"
-	}
+    "welcome": {
+        "mp3": "tefourge/in"
+    },
+    "goodbye": {
+        "mp3": "tefourge/out"
+    }
 }

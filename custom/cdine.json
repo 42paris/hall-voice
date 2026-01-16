@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "cdine/in/"
+    },
+    "goodbye": {
+        "mp3": "cdine/out/"
+    }
+}

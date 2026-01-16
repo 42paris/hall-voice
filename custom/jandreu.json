@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"jandreu/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"jandreu/sortie/"
-	}
+    "welcome": {
+        "mp3": "jandreu/in/"
+    },
+    "goodbye": {
+        "mp3": "jandreu/out/"
+    }
 }

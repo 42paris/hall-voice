@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "lomasse/in"
-  },
-  "goodbye":
-  {
-    "mp3": "lomasse/out"
-  }
+    "welcome": {
+        "mp3": "lomasse/in"
+    },
+    "goodbye": {
+        "mp3": "lomasse/out"
+    }
 }

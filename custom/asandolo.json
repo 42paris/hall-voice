@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"asandolo/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"asandolo/sortie/"
-	}
+    "welcome": {
+        "mp3": "asandolo/in/"
+    },
+    "goodbye": {
+        "mp3": "asandolo/out/"
+    }
 }

@@ -15,40 +15,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.head_ref }}
 
       - name: Install sox, jq and pip packages
         run: |
           sudo apt-get -qq update
           sudo apt-get -qq -y install libsox-fmt-mp3 sox jq
+          python3 -m pip install numpy typing_extensions
           python3 -m pip install -r requirements.txt
 
       - name: Get changed files
-        #uses: lots0logs/gh-action-get-changed-files@2.1.4
-        uses: Mineflash07/gh-action-get-changed-files@feature/support-pr-target-event # Remove as soon as PR is merged. See https://github.com/lots0logs/gh-action-get-changed-files/pull/22
+        uses: lots0logs/gh-action-get-changed-files@2.2.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-#     - name: Run sanitize.py
-#       run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
+      - name: Run scripts/sanitize.py
+        id: check-sanitize
+        continue-on-error: true
+        run: python3 scripts/sanitize.py -v --db -10.0 $HOME/files.json
 
-#     - name: Commit changes
-#       uses: stefanzweifel/git-auto-commit-action@v4
-#       with:
-#         commit_message: 'CI: Sanitize mp3'
-#         commit_author: 'GitHub Actions <actions@github.com>'
+      - name: Commit changes
+        id: check-sanitize-commit
+        continue-on-error: true
+        uses: stefanzweifel/git-auto-commit-action@v5 # Do not update to v6, `skip_checkout` got removed (and is being added back in v7).
+        with:
+          skip_checkout: true
+          # branch: ${{ github.event.pull_request.head.sha }}
+          file_pattern: ./mp3/
+          commit_message: 'CI: Sanitize mp3'
+          commit_author: 'GitHub Actions <actions@github.com>'
 
-#     - name: Post comment for sanitize
-#       uses: actions/github-script@v3
-#       with:
-#         github-token: ${{ secrets.GITHUB_TOKEN }}
-#         script: |
-#           github.issues.createComment({
-#             issue_number: context.issue.number,
-#             owner: context.repo.owner,
-#             repo: context.repo.repo,
-#             body: 'CI: mp3 files have been sanitized 🔉'
-#           })
+      - name: Check if .json file is present
+        id: check-json
+        continue-on-error: true
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} test -f "custom/{}.json"
+
+      - name: Check if there are less than 20 sounds
+        id: check-files
+        continue-on-error: true
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} sh -c 'test $(find mp3/{} -type f | wc -l) -le 20' -- {}
 
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
@@ -56,37 +64,64 @@ jobs:
           API42_ID: ${{ secrets.API42_ID }}
           API42_SECRET: ${{ secrets.API42_SECRET }}
         continue-on-error: true
-        run: |
-          if [[ -n $(jq -r '.[] | select(startswith("custom"))' ${HOME}/files.json) ]];
-          then
-            jq -r '.[] | select(startswith("custom")) | split("/")[] | select(endswith(".json")) | split(".json")[0]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-          else
-            jq -r '.[] | select(startswith("mp3")) | split("/")[1]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-          fi
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 scripts/check-commands.py -v --
 
-      - name: Post comment for check-commands (OK)
-        if: steps.check-commands.outcome == 'success'
-        uses: actions/github-script@v6
+      - name: Check if files are under 1 Mo
+        id: check-files-size
+        continue-on-error: true
+        run: echo $HOME/files.json | xargs python3 scripts/check-files-size.py -v --
+
+      - name: Post comment
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.issues.createComment({
+            const checks = {
+              json: '${{ steps.check-json.outcome }}' === 'success',
+              commands: '${{ steps.check-commands.outcome }}' === 'success',
+              files: '${{ steps.check-files.outcome }}' === 'success',
+              filesSize: '${{ steps.check-files-size.outcome }}' === 'success',
+              sanitize: '${{ steps.check-sanitize.outcome }}' === 'success',
+              sanitizeCommit: '${{ steps.check-sanitize-commit.outcome }}' === 'success',
+            };
+            
+            const messages = {
+              commands: 'Check if you have the Hall-Voice on your intra shop',
+              json: '/custom/login.json file is present',
+              filesSize: 'Audio files are under 1 Mo',
+              files: '20 max audio files',
+              sanitize: 'Volume reduced and audio files trimmed by sanitize',
+              sanitizeCommit: 'Sanitized sound committed',
+            };
+            
+            let message = `CI:\n`;
+            
+            for (const [key, description] of Object.entries(messages)) {
+              message += `  - ${checks[key] ? '✅' : '❌'} ${description}\n`;
+            }
+            
+            if (checks.commands && checks.json && checks.files && checks.filesSize) {
+              message += `\n  - ⌛ Everything looks good, awaiting staff approval\n`;
+            } else {
+              message += `\n  - ❌ Something went wrong, check your PR\n`;
+            }
+            
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'CI: HallVoice check on intra shop: OK ✅'
-            })
-
-      - name: Post comment for check-commands (KO)
-        if: steps.check-commands.outcome != 'success'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'CI: HallVoice check on intra shop: KO ❌'
-            })
-            core.setFailed('HallVoice check on intra shop KO')
+              body: message,
+            });
+            
+            const failureMessages = {
+              json: '.json file is missing',
+              commands: 'HallVoice check on intra shop KO',
+              files: 'More than 20 songs',
+              filesSize: 'Mp3 file is over 1 Mo',
+            };
+            
+            for (const [key, failureMessage] of Object.entries(failureMessages)) {
+              if (!checks[key]) {
+                core.setFailed(failureMessage);
+              }
+            }

@@ -1,0 +1,8 @@
+{
+	"welcome": {
+		"mp3": "blast/in"
+	},
+	"goodbye": {
+		"mp3": "blast/out"
+	}
+}

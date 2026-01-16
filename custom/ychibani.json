@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "ychibani/in"
+    "welcome": {
+        "mp3": "ychibani/in"
     },
-    "goodbye":
-    {
-      "mp3": "ychibani/out"
+    "goodbye": {
+        "mp3": "ychibani/out"
     }
-  }
+}

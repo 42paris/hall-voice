@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"vgauther/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"vgauther/sortie/"
-	}
+    "welcome": {
+        "mp3": "vgauther/in/"
+    },
+    "goodbye": {
+        "mp3": "vgauther/out/"
+    }
 }

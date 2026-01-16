@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "trentinou/in"
-  },
-  "goodbye":
-  {
-    "mp3": "trentinou/out"
-  }
+    "welcome": {
+        "mp3": "trentinou/in"
+    },
+    "goodbye": {
+        "mp3": "trentinou/out"
+    }
 }

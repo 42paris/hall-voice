@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"oroberts/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"oroberts/out/"
-	}
+    "welcome": {
+        "mp3": "oroberts/in/"
+    },
+    "goodbye": {
+        "mp3": "oroberts/out/"
+    }
 }

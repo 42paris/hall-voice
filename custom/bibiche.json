@@ -1,12 +1,10 @@
 {
-  "welcome":
-  {
-    "txt":"bonjour bibiche",
-    "lang":"fr"
-  },
-  "goodbye":
-  {
-    "txt":"salut",
-    "lang":"fr"
-  }
+    "welcome": {
+        "txt": "bonjour bibiche",
+        "lang": "fr"
+    },
+    "goodbye": {
+        "txt": "salut",
+        "lang": "fr"
+    }
 }

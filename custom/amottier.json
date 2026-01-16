@@ -1,12 +1,10 @@
 {
-  "welcome":
-  {
-    "txt":"YO MEC",
-    "lang":"fr"
-  },
-  "goodbye":
-  {
-    "txt":"TCHAO MEC",
-    "lang":"fr"
-  }
+    "welcome": {
+        "txt": "YO MEC",
+        "lang": "fr"
+    },
+    "goodbye": {
+        "txt": "TCHAO MEC",
+        "lang": "fr"
+    }
 }

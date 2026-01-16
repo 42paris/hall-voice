@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"nargouse/in"
-	},
-	"goodbye":
-	{
-		"mp3":"nargouse/out"
-	}
+    "welcome": {
+        "mp3": "nargouse/in"
+    },
+    "goodbye": {
+        "mp3": "nargouse/out"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"brel-baz/"
-	},
-	"goodbye":
-	{
-		"mp3":"brel-baz/"
-	}
+    "welcome": {
+        "mp3": "brel-baz/"
+    },
+    "goodbye": {
+        "mp3": "brel-baz/"
+    }
 }

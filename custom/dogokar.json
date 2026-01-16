@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"dogokar/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"dogokar/entree/"
-	}
+    "welcome": {
+        "mp3": "dogokar/in/"
+    },
+    "goodbye": {
+        "mp3": "dogokar/in/"
+    }
 }

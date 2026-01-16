@@ -1,0 +1,10 @@
+{
+    "welcome": {
+        "txt": "bonjour bibiche",
+        "lang": "fr"
+    },
+    "goodbye": {
+        "txt": "\u044f \u043e\u0447\u0435\u043d\u044c \u043b\u044e\u0431\u043b\u044e \u0448\u043e\u043a\u043e\u043b\u0430\u0434",
+        "lang": "ru"
+    }
+}

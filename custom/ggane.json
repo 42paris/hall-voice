@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"ggane/"
-	},
-	"goodbye":
-	{
-		"mp3":"ggane/"
-	}
+    "welcome": {
+        "mp3": "ggane/"
+    },
+    "goodbye": {
+        "mp3": "ggane/"
+    }
 }

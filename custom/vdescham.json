@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "vdescham/in"
-  },
-  "goodbye":
-  {
-    "mp3": "vdescham/out"
-  }
+    "welcome": {
+        "mp3": "vdescham/in"
+    },
+    "goodbye": {
+        "mp3": "vdescham/out"
+    }
 }

@@ -1,8 +1,8 @@
 {
-	"welcome": {
-		"mp3": "elindao-/in/"
-	},
-	"goodbye": {
-		"mp3": "elindao-/out/"
-	}
+    "welcome": {
+        "mp3": "elindao-/in/"
+    },
+    "goodbye": {
+        "mp3": "elindao-/out/"
+    }
 }

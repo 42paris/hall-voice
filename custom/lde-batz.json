@@ -1,11 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "lde-batz/in"
-  },
-  "goodbye":
-  {
-    "mp3": "lde-batz/out"
-  }
+    "welcome": {
+        "mp3": "lde-batz/in"
+    },
+    "goodbye": {
+        "mp3": "lde-batz/out"
+    }
 }
-

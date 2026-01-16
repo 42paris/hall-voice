@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"stmartin/"
-	},
-	"goodbye":
-	{
-		"mp3":"stmartin/"
-	}
+    "welcome": {
+        "mp3": "stmartin/"
+    },
+    "goodbye": {
+        "mp3": "stmartin/"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"srossi/welcome/"
-	},
-	"goodbye":
-	{
-		"mp3":"srossi/goodbye/"
-	}
+    "welcome": {
+        "mp3": "srossi/welcome/"
+    },
+    "goodbye": {
+        "mp3": "srossi/goodbye/"
+    }
 }

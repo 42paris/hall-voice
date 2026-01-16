@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"ericard/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"ericard/sortie/"
-	}
+    "welcome": {
+        "mp3": "ericard/in/"
+    },
+    "goodbye": {
+        "mp3": "ericard/out/"
+    }
 }

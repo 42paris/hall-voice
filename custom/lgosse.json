@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"lgosse/"
-	},
-	"goodbye":
-	{
-		"mp3":"lgosse/"
-	}
+    "welcome": {
+        "mp3": "lgosse/"
+    },
+    "goodbye": {
+        "mp3": "lgosse/"
+    }
 }

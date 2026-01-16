@@ -1,12 +1,10 @@
 {
-  "welcome":
-  {
-    "txt":"привет себастиен",
-    "lang":"ru"
-  },
-  "goodbye":
-  {
-    "mp3":"soviet.mp3",
-    "test":"test"
-  }
+    "welcome": {
+        "txt": "\u043f\u0440\u0438\u0432\u0435\u0442 \u0441\u0435\u0431\u0430\u0441\u0442\u0438\u0435\u043d",
+        "lang": "ru"
+    },
+    "goodbye": {
+        "mp3": "soviet.mp3",
+        "test": "test"
+    }
 }

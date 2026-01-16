@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "thugo/in"
+    },
+    "goodbye": {
+        "mp3": "thugo/out"
+    }
+}

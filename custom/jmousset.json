@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"jmousset/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"jmousset/out/"
-	}
+    "welcome": {
+        "mp3": "jmousset/in/"
+    },
+    "goodbye": {
+        "mp3": "jmousset/out/"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "gmaris/entree"
-	},
-	"goodbye":
-	{
-		"mp3": "gmaris/sortie"
-	}
+    "welcome": {
+        "mp3": "gmaris/in"
+    },
+    "goodbye": {
+        "mp3": "gmaris/out"
+    }
 }

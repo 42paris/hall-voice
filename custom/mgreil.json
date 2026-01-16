@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"mgreil/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"mgreil/sortie/"
-	}
+    "welcome": {
+        "mp3": "mgreil/in/"
+    },
+    "goodbye": {
+        "mp3": "mgreil/out/"
+    }
 }

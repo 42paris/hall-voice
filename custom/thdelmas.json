@@ -1,12 +1,10 @@
 {
-	"welcome":
-	{
-		"txt":" ",
-		"lang":"fr"
-	},
-	"goodbye":
-	{
-		"txt":" ",
-		"lang":"fr"
-	}
+    "welcome": {
+        "txt": " ",
+        "lang": "fr"
+    },
+    "goodbye": {
+        "txt": " ",
+        "lang": "fr"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"chbechet/"
-	},
-	"goodbye":
-	{
-		"mp3":"chbechet/"
-	}
+    "welcome": {
+        "mp3": "chbechet/"
+    },
+    "goodbye": {
+        "mp3": "chbechet/"
+    }
 }

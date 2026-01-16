@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "cmace/in/"
+    },
+    "goodbye": {
+        "mp3": "cmace/out/"
+    }
+}

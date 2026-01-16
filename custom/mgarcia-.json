@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"mgarcia-/in"
-	},
-	"goodbye":
-	{
-		"mp3":"mgarcia-/out"
-	}
+    "welcome": {
+        "mp3": "mgarcia-/in"
+    },
+    "goodbye": {
+        "mp3": "mgarcia-/out"
+    }
 }

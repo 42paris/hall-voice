@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "mde-jesu/welcome/"
-  },
-  "goodbye":
-  {
-    "mp3": "mde-jesu/goodbye/"
-  }
+    "welcome": {
+        "mp3": "mde-jesu/welcome/"
+    },
+    "goodbye": {
+        "mp3": "mde-jesu/goodbye/"
+    }
 }

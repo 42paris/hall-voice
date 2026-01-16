@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "abordack/in"
+    },
+    "goodbye": {
+        "mp3": "abordack/out"
+    }
+}

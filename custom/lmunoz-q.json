@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"lmunoz-q/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"lmunoz-q/sortie/"
-	}
+    "welcome": {
+        "mp3": "lmunoz-q/in/"
+    },
+    "goodbye": {
+        "mp3": "lmunoz-q/out/"
+    }
 }

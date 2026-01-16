@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"rfautier/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"rfautier/out/"
-	}
+    "welcome": {
+        "mp3": "rfautier/in/"
+    },
+    "goodbye": {
+        "mp3": "rfautier/out/"
+    }
 }

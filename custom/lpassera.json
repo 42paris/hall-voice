@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"lpassera/in"
-	},
-	"goodbye":
-	{
-		"mp3":"lpassera/out"
-	}
+    "welcome": {
+        "mp3": "lpassera/in"
+    },
+    "goodbye": {
+        "mp3": "lpassera/out"
+    }
 }

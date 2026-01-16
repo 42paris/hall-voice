@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "yobougre/in"
+    "welcome": {
+        "mp3": "yobougre/in"
     },
-    "goodbye":
-    {
-      "mp3": "yobougre/out"
+    "goodbye": {
+        "mp3": "yobougre/out"
     }
-  }
+}

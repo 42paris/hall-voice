@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "gicomlan/in"
+    },
+    "goodbye": {
+        "mp3": "gicomlan/out"
+    }
+}

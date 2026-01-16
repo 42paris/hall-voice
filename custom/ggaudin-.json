@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"ggaudin-/"
-	},
-	"goodbye":
-	{
-		"mp3":"ggaudin-/"
-	}
+    "welcome": {
+        "mp3": "ggaudin-/"
+    },
+    "goodbye": {
+        "mp3": "ggaudin-/"
+    }
 }

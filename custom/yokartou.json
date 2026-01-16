@@ -1,10 +1,8 @@
 {
-		"welcome":
-		{
-				"mp3":"yokartou/in/"
-		},
-		"goodbye":
-		{
-				"mp3":"yokartou/out/"
-		}
+    "welcome": {
+        "mp3": "yokartou/in/"
+    },
+    "goodbye": {
+        "mp3": "yokartou/out/"
+    }
 }

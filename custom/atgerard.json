@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"atgerard/"
-	},
-	"goodbye":
-	{
-		"mp3":"atgerard/"
-	}
+    "welcome": {
+        "mp3": "atgerard/"
+    },
+    "goodbye": {
+        "mp3": "atgerard/"
+    }
 }

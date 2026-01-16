@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"jjaniec/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"jjaniec/out/"
-	}
+    "welcome": {
+        "mp3": "jjaniec/in/"
+    },
+    "goodbye": {
+        "mp3": "jjaniec/out/"
+    }
 }

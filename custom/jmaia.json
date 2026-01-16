@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "jmaia/in"
-  },
-  "goodbye":
-  {
-    "mp3": "jmaia/out"
-  }
+    "welcome": {
+        "mp3": "jmaia/in"
+    },
+    "goodbye": {
+        "mp3": "jmaia/out"
+    }
 }

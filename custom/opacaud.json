@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "opacaud/in"
+    },
+    "goodbye": {
+        "mp3": "opacaud/out"
+    }
+}

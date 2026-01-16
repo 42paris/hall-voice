@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3":"apages/in.mp3"
-  },
-  "goodbye":
-  {
-    "mp3":"apages/out.mp3"
-  }
+    "welcome": {
+        "mp3": "apages/in.mp3"
+    },
+    "goodbye": {
+        "mp3": "apages/out.mp3"
+    }
 }

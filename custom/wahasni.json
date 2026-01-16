@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"wahasni/entree/"
-	},
-	"goodbye":
-	{
-		"mp3":"wahasni/sortie/"
-	}
+    "welcome": {
+        "mp3": "wahasni/in/"
+    },
+    "goodbye": {
+        "mp3": "wahasni/out/"
+    }
 }

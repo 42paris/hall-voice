@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "dbaffier/in"
-	},
-	"goodbye":
-	{
-		"mp3": "dbaffier/out"
-	}
+    "welcome": {
+        "mp3": "dbaffier/in"
+    },
+    "goodbye": {
+        "mp3": "dbaffier/out"
+    }
 }

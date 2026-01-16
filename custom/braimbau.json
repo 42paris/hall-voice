@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"braimbau/out"
-	},
-	"goodbye":
-	{
-		"mp3":"braimbau/out"
-	}
+    "welcome": {
+        "mp3": "braimbau/out"
+    },
+    "goodbye": {
+        "mp3": "braimbau/out"
+    }
 }

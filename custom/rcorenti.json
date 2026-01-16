@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "rcorenti/in"
+    },
+    "goodbye": {
+        "mp3": "rcorenti/out"
+    }
+}

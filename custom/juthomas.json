@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "juthomas/in"
-	},
-	"goodbye":
-	{
-		"mp3": "juthomas/out"
-	}
+    "welcome": {
+        "mp3": "juthomas/in"
+    },
+    "goodbye": {
+        "mp3": "juthomas/out"
+    }
 }

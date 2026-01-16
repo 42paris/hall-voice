@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"frtalleu/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"frtalleu/out/"
-	}
+    "welcome": {
+        "mp3": "frtalleu/in/"
+    },
+    "goodbye": {
+        "mp3": "frtalleu/out/"
+    }
 }

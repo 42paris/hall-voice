@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "ablanar/in"
+    "welcome": {
+        "mp3": "ablanar/in"
     },
-    "goodbye":
-    {
-      "mp3": "ablanar/out"
+    "goodbye": {
+        "mp3": "ablanar/out"
     }
-  }
+}

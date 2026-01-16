@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "mvaldes/in"
-  },
-  "goodbye":
-  {
-    "mp3": "mvaldes/out"
-  }
+    "welcome": {
+        "mp3": "mvaldes/in"
+    },
+    "goodbye": {
+        "mp3": "mvaldes/out"
+    }
 }

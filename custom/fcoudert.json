@@ -1,11 +1,8 @@
 {
-	"welcome":
-	{
-	  "mp3": "fcoudert/in"
-	},
-	"goodbye":
-	{
-	  "mp3": "fcoudert/out"
-	}
-  }
-  
+    "welcome": {
+        "mp3": "fcoudert/in"
+    },
+    "goodbye": {
+        "mp3": "fcoudert/out"
+    }
+}
