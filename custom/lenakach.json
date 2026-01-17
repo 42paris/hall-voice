@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "lenakach/in"
+  },
+  "goodbye":
+  {
+    "mp3": "lenakach/out"
+  }
+}
