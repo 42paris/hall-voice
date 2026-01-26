@@ -1,42 +1,45 @@
 import datetime
-import asyncio
+import threading
 import redis
-import time
 from IntraAPIClient import IntraAPIClient
 
 
-class API42(object):
+class API42:
     def __init__(self, conf) -> None:
         self.redis = redis.Redis(host=conf.getRedisHost(), port=conf.getRedisPort(), db=0)
         self.redis_ttl: int = conf.getRedisTTL()
-        apiKey: list[str] = conf.getAPIkeys()
         self.api = IntraAPIClient(conf)
 
-    async def refreshCache(self, login) -> str | None:
+    def _cache_key(self, login: str) -> str:
+        return f"login: {login}"
+
+    def refresh_cache(self, login: str) -> str | None:
         url = f"users/{login}"
         try:
             print(f"[{datetime.datetime.now()}] API refreshing cache for {login}")
             intra = self.api.get(url)
-            if intra is not None and intra.status_code == 200:
-                # Get the usual name
-                firstname = intra.json()["usual_first_name"]
-                # If there is no usual name, take the first_name
-                if firstname is None:
-                    firstname = intra.json()["first_name"]
-                # Putting in redis cache
-                self.redis.set(f"login: {login}", firstname, ex=self.redis_ttl)  # Cache the firstname for 6 month
-                return firstname
+            if intra is None or intra.status_code != 200:
+                return None
+            data = intra.json()
+            firstname = data.get("usual_first_name") or data.get("first_name")
+            if not firstname:
+                return None
+            self.redis.set(self._cache_key(login), firstname, ex=self.redis_ttl)
+            return firstname
         except Exception as e:
-            print(f"[{datetime.datetime.now()}] API exception excepted while refreshing cache, {e}")
+            print(f"[{datetime.datetime.now()}] API exception while refreshing cache: {e}")
             return None
 
-    def getUsualName(self, login) -> str | None:
-        cached_data = self.redis.get(f"login: {login}")
+    def getUsualName(self, login: str) -> str | None:
+        key = self._cache_key(login)
+        cached_data = self.redis.get(key)
         if cached_data:
             print(f"[{datetime.datetime.now()}] API cache data found for {login}")
-            asyncio.create_task(self.refreshCache(login))  # Refresh cache in background
-            # Return firstname if it is in redis cache
-            return str(cached_data.decode('utf-8'))
-        else:
-            # Else get it from API
-            return asyncio.run(self.refreshCache(login))
+            # Refresh en arrière-plan
+            threading.Thread(
+                target=self.refresh_cache,
+                args=(login,),
+                daemon=True
+            ).start()
+            return cached_data.decode("utf-8")
+        return self.refresh_cache(login)
