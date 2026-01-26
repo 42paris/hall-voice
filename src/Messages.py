@@ -37,7 +37,7 @@ class Messages(object):
         if login is not None and login != "":
             firstname: str = self.api.getUsualName(login)
         if firstname is None or firstname == "":
-            firstname: str = data["firstname"]
+            firstname: str = "toi"
         jsonFile: str = (self.customPath + login + ".json")
         if os.path.isfile(jsonFile):
             print(f"[{datetime.datetime.now()}][HV] Custom HallVoice for " + login + ": " + jsonFile)
