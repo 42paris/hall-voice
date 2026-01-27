@@ -33,8 +33,9 @@ class Messages(object):
         print(f"[{datetime.datetime.now()}][HV] NEW MESSAGE: {msg}")
         kind: str = data['kind']
         login: str = data['login']
-        firstname: str = ""
-        if login is not None and login != "":
+        company: str = data['company']
+        firstname: str = "" if "promo" in company or "piscine" in company else data['firstname']
+        if login is not None and login != "" and firstname == "":
             firstname: str = self.api.getUsualName(login)
         if firstname is None or firstname == "":
             firstname: str = "toi"
