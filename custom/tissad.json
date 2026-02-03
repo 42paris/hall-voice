@@ -1,0 +1,8 @@
+{
+    welcome: {
+        mp3: tissad/in
+    },
+    goodbye: {
+        mp3: tissad/out
+    }
+}
