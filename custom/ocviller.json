@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "ocviller/in"
+  },
+  "goodbye":
+  {
+    "mp3": "ocviller/out"
+  }
+}
