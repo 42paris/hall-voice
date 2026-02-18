@@ -53,6 +53,6 @@ if __name__ == "__main__":
         print('Remove invalid files:', args.remove, '\n')
 
     for filepath in jsondata:
-        if os.path.exists(filepath):
+        if filepath.endswith(".mp3") and os.path.exists(filepath):
             sanitize_file(filepath)
 

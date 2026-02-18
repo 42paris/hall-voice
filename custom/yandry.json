@@ -1,0 +1,8 @@
+{
+	"welcome" : {
+		"mp3" : "yandry/in"
+	},
+	"goodbye" : {
+		"mp3" : "yandry/out"
+	}
+}
