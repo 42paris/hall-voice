@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "siligh/in"
+  },
+  "goodbye":
+  {
+    "mp3": "siligh/out"
+  }
+}
