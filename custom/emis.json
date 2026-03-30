@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "emis/in/"
+    },
+    "goodbye": {
+        "mp3": "emis/out/"
+    }
+}
