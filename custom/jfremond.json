@@ -1,8 +1,8 @@
 {
     "welcome": {
-        "mp3": "jfremond/in"
+        "mp3": "jfremond/in/"
     },
     "goodbye": {
-        "mp3": "jfremond/out"
+        "mp3": "jfremond/out/"
     }
 }
