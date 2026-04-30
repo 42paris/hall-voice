@@ -1,9 +1,10 @@
 {
     "welcome": {
-        "mp3": "rarangur"
+        "txt": "Hola",
+        "lang": "es"
     },
     "goodbye": {
-        "txt": "Adios Ric",
+        "txt": "Adios",
         "lang": "es"
     }
 }
