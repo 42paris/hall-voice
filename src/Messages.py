@@ -42,7 +42,7 @@ class Messages(object):
 
         firstname: str = "" if "promo" in company or "piscine" in company else data["firstname"]
         if login and firstname == "":
-            firstname = self.api.getUsualName(login)
+            firstname = self.api.getName(login)
         if not firstname:
             firstname = "toi"
 

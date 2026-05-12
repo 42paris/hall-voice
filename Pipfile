@@ -5,8 +5,6 @@ name = "pypi"
 
 [packages]
 sox = "*"
-requests-oauthlib = "*"
-oauthlib = "*"
 gtts = "*"
 confluent-kafka = "*"
 redis = "*"
