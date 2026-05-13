@@ -10,7 +10,7 @@ class RatatouilleClient:
         username: str | None = None,
         password: str | None = None,
         auth_base_url: str = "https://auth.42paris.fr",
-        api_base_url: str = "https://ratatouille.42paris.fr",
+        api_base_url: str = "https://ratatouille.42paris.fr/api/v1",
         realm: str = "master",
         scope: str = "openid",
     ):
