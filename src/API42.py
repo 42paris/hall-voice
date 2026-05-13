@@ -22,8 +22,7 @@ class API42:
             user = self.client.getUserByIDOrUsername(login)
             if user is None:
                 return None
-            data = user.json()
-            firstname = data.get("first_name")
+            firstname = user.get("first_name")
             if not firstname:
                 return None
             self.redis.set(self._cache_key(login), firstname, ex=self.redis_ttl)
