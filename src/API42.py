@@ -18,9 +18,9 @@ class API42:
 
     def refresh_cache(self, login: str) -> str | None:
         try:
-            print(f"[{datetime.datetime.now()}] API refreshing cache for {login}")
+            print(f"[{datetime.datetime.now()}][API] refreshing cache for {login}")
             user = self.client.getUserByIDOrUsername(login)
-            if user is None or user.status_code != 200:
+            if user is None:
                 return None
             data = user.json()
             firstname = data.get("first_name")
@@ -29,14 +29,14 @@ class API42:
             self.redis.set(self._cache_key(login), firstname, ex=self.redis_ttl)
             return firstname
         except Exception as e:
-            print(f"[{datetime.datetime.now()}] API exception while refreshing cache: {e}")
+            print(f"[{datetime.datetime.now()}][API] exception while refreshing cache: {e}")
             return None
 
     def getName(self, login: str) -> str | None:
         key = self._cache_key(login)
         cached_data = self.redis.get(key)
         if cached_data:
-            print(f"[{datetime.datetime.now()}] API cache data found for {login}")
+            print(f"[{datetime.datetime.now()}][API] cache data found for {login}")
             # Refresh en arrière-plan
             threading.Thread(
                 target=self.refresh_cache,
