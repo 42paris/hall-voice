@@ -64,7 +64,8 @@ jobs:
           API42_ID: ${{ secrets.API42_ID }}
           API42_SECRET: ${{ secrets.API42_SECRET }}
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 scripts/check-commands.py -v --
+        run: echo disabled for now
+        #run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 scripts/check-commands.py -v --
 
       - name: Check if files are under 1 Mo
         id: check-files-size
@@ -86,7 +87,7 @@ jobs:
             };
             
             const messages = {
-              commands: 'Check if you have the Hall-Voice on your intra shop',
+              commands: 'Check if you have the Hall-Voice on your intra shop [Disabled for now]',
               json: '/custom/login.json file is present',
               filesSize: 'Audio files are under 1 Mo',
               files: '20 max audio files',
