@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "wnocchi/in"
+  },
+  "goodbye":
+  {
+    "mp3": "wnocchi/out"
+  }
+}
