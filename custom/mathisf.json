@@ -1,9 +1,9 @@
 
 {
     "welcome": {
-        "mp3": "mathisf"
+        "mp3": "mathisf/in"
     },
     "goodbye": {
-        "mp3": "mathisf"
+        "mp3": "mathisf/out"
     }
 }
