@@ -5,4 +5,3 @@ gtts
 confluent-kafka
 redis
 requests
-pygame

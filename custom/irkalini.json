@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "irkalini/in"
+  },
+  "goodbye":
+  {
+    "mp3": "irkalini/out"
+  }
+}

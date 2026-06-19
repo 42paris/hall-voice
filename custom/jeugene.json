@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "coldplay/in"
+    },
+    "goodbye": {
+        "mp3": "coldplay/out"
+    }
+}
