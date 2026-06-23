@@ -1,0 +1,9 @@
+{
+  "welcome": {
+    "mp3": "smamalig/stdin/"
+  },
+  "goodbye": {
+    "mp3": "smamalig/stdout/"
+  }
+}
+
