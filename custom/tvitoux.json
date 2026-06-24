@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "tvitoux/in"
+  },
+  "goodbye":
+  {
+    "mp3": "tvitoux/out"
+  }
+}
