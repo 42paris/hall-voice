@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "tiboitel/in"
+    },
+    "goodbye": {
+        "mp3": "tiboitel/out"
+    }
+}
