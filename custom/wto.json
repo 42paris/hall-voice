@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "wto/in"
+  },
+  "goodbye":
+  {
+    "mp3": "wto/out"
+  }
+}
