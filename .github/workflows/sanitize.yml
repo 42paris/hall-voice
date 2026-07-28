@@ -1,7 +1,7 @@
 name: Sanitize
 
 on:
-  pull_request_target:
+  pull_request:
     branches: [ master ]
     paths:
       - 'custom/*.json'
@@ -16,9 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.head_ref }}
 
       - name: Install sox, jq and pip packages
         run: |
