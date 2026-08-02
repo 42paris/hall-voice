@@ -216,14 +216,15 @@ jobs:
         env:
           API42_ID: ${{ secrets.API42_ID }}
           API42_SECRET: ${{ secrets.API42_SECRET }}
-        run: |
-          test -n "$API42_ID"
-          test -n "$API42_SECRET"
-          test -s sanitize-result/logins.txt
+        run: echo 'Disabled for now (Intra API route is broken)'
+        #run: |
+        #  test -n "$API42_ID"
+        #  test -n "$API42_SECRET"
+        #  test -s sanitize-result/logins.txt
 
-          xargs -r \
-            python3 scripts/check-commands.py -v -- \
-            < sanitize-result/logins.txt
+        #  xargs -r \
+        #    python3 scripts/check-commands.py -v -- \
+        #    < sanitize-result/logins.txt
 
       - name: Post or update PR comment
         if: always()
