@@ -1,0 +1,350 @@
+name: Check commands and comment
+
+on:
+  workflow_run:
+    workflows: ["Sanitize"]
+    types: [completed]
+
+# This workflow runs from the trusted default branch, not the PR's fork
+permissions:
+  actions: read
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  check-commands-and-comment:
+    if: github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download sanitize result artifact
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const runId = context.payload.workflow_run.id;
+
+            const response =
+              await github.rest.actions.listWorkflowRunArtifacts({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: runId,
+                per_page: 100,
+              });
+
+            const artifact = response.data.artifacts.find(
+              item => item.name === "sanitize-result" && !item.expired
+            );
+
+            if (!artifact) {
+              core.setFailed(
+                `sanitize-result artifact not found for workflow run ${runId}`
+              );
+              return;
+            }
+
+            const download =
+              await github.rest.actions.downloadArtifact({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                artifact_id: artifact.id,
+                archive_format: "zip",
+              });
+
+            const fs = require("fs");
+
+            fs.writeFileSync(
+              "sanitize-result.zip",
+              Buffer.from(download.data)
+            );
+
+      - name: Extract result
+        run: |
+          mkdir -p sanitize-result
+          unzip -p sanitize-result.zip result.json \
+            > sanitize-result/result.json
+
+          test -s sanitize-result/result.json
+
+          # The artifact should remain small. It contains only metadata,
+          # login names and Boolean results.
+          test "$(wc -c < sanitize-result/result.json)" -le 65536
+
+      - name: Validate result structure
+        run: |
+          jq -e '
+            type == "object"
+            and .version == 1
+            and (.pr | type == "number" and . > 0)
+            and (
+              .headSha
+              | type == "string"
+              and test("^[0-9a-f]{40}$")
+            )
+            and (
+              .headRepository
+              | type == "string"
+              and length > 0
+              and length <= 200
+            )
+            and (
+              .headRef
+              | type == "string"
+              and length > 0
+              and length <= 250
+            )
+            and (.logins | type == "array")
+            and (.logins | length > 0)
+            and (.logins | length <= 100)
+            and all(
+              .logins[];
+              type == "string"
+              and test("^[A-Za-z0-9_-]{1,32}$")
+            )
+            and (.checks | type == "object")
+            and (.checks.json | type == "boolean")
+            and (.checks.files | type == "boolean")
+            and (.checks.filesSize | type == "boolean")
+            and (.checks.sanitize | type == "boolean")
+            and (.checks.sanitizerChanged | type == "boolean")
+          ' sanitize-result/result.json >/dev/null
+
+      - name: Verify artifact belongs to the pull request
+        uses: actions/github-script@v8
+        env:
+          RESULT_FILE: sanitize-result/result.json
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const fs = require("fs");
+
+            const result = JSON.parse(
+              fs.readFileSync(process.env.RESULT_FILE, "utf8")
+            );
+
+            const workflowRun = context.payload.workflow_run;
+
+            if (workflowRun.event !== "pull_request") {
+              core.setFailed("The source workflow was not a pull_request run");
+              return;
+            }
+
+            if (result.headSha !== workflowRun.head_sha) {
+              core.setFailed(
+                "Artifact head SHA does not match the workflow run head SHA"
+              );
+              return;
+            }
+
+            const pullRequest = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: result.pr,
+            });
+
+            if (pullRequest.data.state !== "open") {
+              core.setFailed("The pull request is no longer open");
+              return;
+            }
+
+            if (pullRequest.data.head.sha !== result.headSha) {
+              core.setFailed(
+                "The pull request head SHA has changed since validation"
+              );
+              return;
+            }
+
+            if (
+              pullRequest.data.head.repo?.full_name !== result.headRepository
+            ) {
+              core.setFailed(
+                "The pull request head repository does not match the artifact"
+              );
+              return;
+            }
+
+            if (pullRequest.data.head.ref !== result.headRef) {
+              core.setFailed(
+                "The pull request head branch does not match the artifact"
+              );
+              return;
+            }
+
+            const associatedPullRequests =
+              workflowRun.pull_requests ?? [];
+
+            if (
+              associatedPullRequests.length > 0 &&
+              !associatedPullRequests.some(pr => pr.number === result.pr)
+            ) {
+              core.setFailed(
+                "The pull request is not associated with this workflow run"
+              );
+              return;
+            }
+
+            fs.writeFileSync(
+              "sanitize-result/pr-number.txt",
+              `${result.pr}\n`
+            );
+
+            fs.writeFileSync(
+              "sanitize-result/logins.txt",
+              `${result.logins.join("\n")}\n`
+            );
+
+      # Checkout only trusted code from the base repository.
+      # Never checkout the external PR branch in this workflow.
+      - name: Checkout trusted check script
+        uses: actions/checkout@v5
+        with:
+          ref: master
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/check-commands.py
+            requirements.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install -r requirements.txt
+
+      - name: Check Hall Voice purchase
+        id: check-commands
+        continue-on-error: true
+        env:
+          API42_ID: ${{ secrets.API42_ID }}
+          API42_SECRET: ${{ secrets.API42_SECRET }}
+        run: |
+          test -n "$API42_ID"
+          test -n "$API42_SECRET"
+          test -s sanitize-result/logins.txt
+
+          xargs -r \
+            python3 scripts/check-commands.py -v -- \
+            < sanitize-result/logins.txt
+
+      - name: Post or update PR comment
+        if: always()
+        uses: actions/github-script@v8
+        env:
+          RESULT_FILE: sanitize-result/result.json
+          PR_NUMBER_FILE: sanitize-result/pr-number.txt
+          COMMANDS_OUTCOME: ${{ steps.check-commands.outcome }}
+          SOURCE_RUN_URL: ${{ github.event.workflow_run.html_url }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const fs = require("fs");
+
+            if (!fs.existsSync(process.env.PR_NUMBER_FILE)) {
+              core.setFailed(
+                "Validated pull request number is unavailable"
+              );
+              return;
+            }
+
+            const result = JSON.parse(
+              fs.readFileSync(process.env.RESULT_FILE, "utf8")
+            );
+
+            const prNumber = Number(
+              fs.readFileSync(
+                process.env.PR_NUMBER_FILE,
+                "utf8"
+              ).trim()
+            );
+
+            const checks = {
+              ...result.checks,
+              commands: process.env.COMMANDS_OUTCOME === "success",
+            };
+
+            const messages = [
+              [
+                "commands",
+                "Hall Voice purchase found on the 42 intra shop",
+              ],
+              [
+                "json",
+                "/custom/login.json file is present",
+              ],
+              [
+                "filesSize",
+                "Audio files are under 1 MB",
+              ],
+              [
+                "files",
+                "20 max audio files",
+              ],
+              [
+                "sanitize",
+                "Sanitizer completed successfully",
+              ],
+            ];
+
+            let body = "<!-- sanitize-ci-comment -->\n";
+            body += "## Sanitize CI\n\n";
+
+            for (const [key, description] of messages) {
+              body += `- ${checks[key] ? "✅" : "❌"} ${description}\n`;
+            }
+
+            body += checks.sanitizerChanged
+              ? "- ❌ The sanitizer modified audio files. Run it locally and commit the results.\n"
+              : "- ✅ Audio files already match the sanitizer output.\n";
+
+            const valid =
+              checks.commands &&
+              checks.json &&
+              checks.files &&
+              checks.filesSize &&
+              checks.sanitize &&
+              !checks.sanitizerChanged;
+
+            body += valid
+              ? "\n⌛ Everything looks good, awaiting staff approval.\n"
+              : "\n❌ One or more checks failed. Review the workflow logs.\n";
+
+            body += `\n[View validation workflow](${process.env.SOURCE_RUN_URL})`;
+
+            const comments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                per_page: 100,
+              }
+            );
+
+            const marker = "<!-- sanitize-ci-comment -->";
+
+            const previousComment = comments.find(
+              comment =>
+                comment.user?.type === "Bot" &&
+                comment.body?.includes(marker)
+            );
+
+            if (previousComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: previousComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
+
+      - name: Fail when Hall Voice check failed
+        if: always() && steps.check-commands.outcome != 'success'
+        run: |
+          echo "::error::Hall Voice check on the 42 intra shop failed"
+          exit 1
