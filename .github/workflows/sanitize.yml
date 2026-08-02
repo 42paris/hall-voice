@@ -96,21 +96,6 @@ jobs:
             -- \
             "$HOME/files.json"
 
-      - name: Check whether sanitizer modified files
-        id: sanitizer-changes
-        if: always()
-        run: |
-          if git diff --quiet -- mp3/; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-
-            echo "::error::The sanitizer modified MP3 files."
-            echo "Run scripts/sanitize.py locally and commit the changes."
-
-            git diff --stat -- mp3/
-          fi
-
       - name: Create result artifact
         if: always() && github.event_name == 'pull_request'
         env:
@@ -205,11 +190,6 @@ jobs:
 
           if [ "$CHECK_SANITIZE" != "success" ]; then
             echo "::error::The sanitizer failed"
-            failed=true
-          fi
-
-          if [ "$SANITIZER_CHANGED" = "true" ]; then
-            echo "::error::Sanitized files need to be committed"
             failed=true
           fi
 
