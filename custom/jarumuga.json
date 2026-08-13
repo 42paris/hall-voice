@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "jarumuga/in"
+  },
+  "goodbye":
+  {
+    "mp3": "jarumuga/out"
+  }
+}
