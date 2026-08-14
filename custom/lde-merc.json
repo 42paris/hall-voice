@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "lde-merc/in"
+  },
+  "goodbye":
+  {
+    "mp3": "lde-merc/out"
+  }
+}
