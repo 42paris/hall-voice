@@ -16,6 +16,9 @@ def get_token():
 
 
 def check_login(api, login):
+    if login in os.environ['LOGIN_OVERRIDES'].split(','):
+        return True
+
     time.sleep(1)
     response = api.get(f"https://api.intra.42.fr/v2/users/{login}").json()
     if response:

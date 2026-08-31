@@ -1,26 +1,27 @@
 name: Sanitize
 
 on:
-  pull_request_target:
-    branches: [ master ]
+  pull_request:
+    branches: [master]
     paths:
-      - 'custom/*.json'
-      - 'mp3/**'
-      - '**.mp3'
+      - "custom/*.json"
+      - "mp3/**"
+      - "**.mp3"
 
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   sanitize:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.head_ref }}
 
-      - name: Install sox, jq and pip packages
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v5
+
+      - name: Install sox, jq and Python packages
         run: |
           sudo apt-get -qq update
           sudo apt-get -qq -y install libsox-fmt-mp3 sox jq
@@ -30,99 +31,168 @@ jobs:
       - name: Get changed files
         uses: lots0logs/gh-action-get-changed-files@2.2.2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
 
-      - name: Run scripts/sanitize.py
+      - name: Run sanitizer
         id: check-sanitize
         continue-on-error: true
-        run: python3 scripts/sanitize.py -v --db -10.0 $HOME/files.json
+        run: |
+          python3 scripts/sanitize.py \
+            -v \
+            --db -10.0 \
+            "$HOME/files.json"
 
-      - name: Commit changes
-        id: check-sanitize-commit
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5 # Do not update to v6, `skip_checkout` got removed (and is being added back in v7).
-        with:
-          skip_checkout: true
-          # branch: ${{ github.event.pull_request.head.sha }}
-          file_pattern: ./mp3/
-          commit_message: 'CI: Sanitize mp3'
-          commit_author: 'GitHub Actions <actions@github.com>'
-
-      - name: Check if .json file is present
+      - name: Check if JSON file is present
         id: check-json
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} test -f "custom/{}.json"
+        run: |
+          jq -r '
+            [
+              .[]
+              | select(
+                  startswith("custom/")
+                  or startswith("mp3/")
+                )
+              | split("/")[1]
+              | sub("\\.json$"; "")
+            ]
+            | unique[]
+          ' "$HOME/files.json" |
+          xargs -r -I {} test -f "custom/{}.json"
 
-      - name: Check if there are less than 20 sounds
+      - name: Check if there are at most 20 sounds
         id: check-files
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} sh -c 'test $(find mp3/{} -type f | wc -l) -le 20' -- {}
+        run: |
+          jq -r '
+            [
+              .[]
+              | select(
+                  startswith("custom/")
+                  or startswith("mp3/")
+                )
+              | split("/")[1]
+              | sub("\\.json$"; "")
+            ]
+            | unique[]
+          ' "$HOME/files.json" |
+          xargs -r -I {} sh -c '
+            directory="mp3/$1"
 
-      - name: Check if student has bought Hall Voice Change on intra
-        id: check-commands
-        env:
-          API42_ID: ${{ secrets.API42_ID }}
-          API42_SECRET: ${{ secrets.API42_SECRET }}
-        continue-on-error: true
-        run: echo disabled for now
-        #run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 scripts/check-commands.py -v --
+            if [ ! -d "$directory" ]; then
+              exit 1
+            fi
 
-      - name: Check if files are under 1 Mo
+            count="$(find "$directory" -type f | wc -l)"
+            test "$count" -le 20
+          ' -- {}
+
+      - name: Check if files are under 1 MB
         id: check-files-size
         continue-on-error: true
-        run: echo $HOME/files.json | xargs python3 scripts/check-files-size.py -v --
+        run: |
+          python3 scripts/check-files-size.py \
+            -v \
+            -- \
+            "$HOME/files.json"
 
-      - name: Post comment
-        uses: actions/github-script@v8
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const checks = {
-              json: '${{ steps.check-json.outcome }}' === 'success',
-              commands: '${{ steps.check-commands.outcome }}' === 'success',
-              files: '${{ steps.check-files.outcome }}' === 'success',
-              filesSize: '${{ steps.check-files-size.outcome }}' === 'success',
-              sanitize: '${{ steps.check-sanitize.outcome }}' === 'success',
-              sanitizeCommit: '${{ steps.check-sanitize-commit.outcome }}' === 'success',
-            };
-            
-            const messages = {
-              commands: 'Check if you have the Hall-Voice on your intra shop [Disabled for now]',
-              json: '/custom/login.json file is present',
-              filesSize: 'Audio files are under 1 Mo',
-              files: '20 max audio files',
-              sanitize: 'Volume reduced and audio files trimmed by sanitize',
-              sanitizeCommit: 'Sanitized sound committed',
-            };
-            
-            let message = `CI:\n`;
-            
-            for (const [key, description] of Object.entries(messages)) {
-              message += `  - ${checks[key] ? '✅' : '❌'} ${description}\n`;
-            }
-            
-            if (checks.commands && checks.json && checks.files && checks.filesSize) {
-              message += `\n  - ⌛ Everything looks good, awaiting staff approval\n`;
-            } else {
-              message += `\n  - ❌ Something went wrong, check your PR\n`;
-            }
-            
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: message,
-            });
-            
-            const failureMessages = {
-              json: '.json file is missing',
-              commands: 'HallVoice check on intra shop KO',
-              files: 'More than 20 songs',
-              filesSize: 'Mp3 file is over 1 Mo',
-            };
-            
-            for (const [key, failureMessage] of Object.entries(failureMessages)) {
-              if (!checks[key]) {
-                core.setFailed(failureMessage);
+      - name: Create result artifact
+        if: always() && github.event_name == 'pull_request'
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+
+          CHECK_JSON: ${{ steps.check-json.outcome }}
+          CHECK_FILES: ${{ steps.check-files.outcome }}
+          CHECK_FILES_SIZE: ${{ steps.check-files-size.outcome }}
+          CHECK_SANITIZE: ${{ steps.check-sanitize.outcome }}
+          SANITIZER_CHANGED: ${{ steps.sanitizer-changes.outputs.changed }}
+        run: |
+          mkdir -p ci-result
+
+          jq '
+            [
+              .[]
+              | select(
+                  startswith("custom/")
+                  or startswith("mp3/")
+                )
+              | split("/")[1]
+              | sub("\\.json$"; "")
+            ]
+            | map(select(length > 0))
+            | unique
+          ' "$HOME/files.json" > ci-result/logins.json
+
+          jq -n \
+            --argjson pr "$PR_NUMBER" \
+            --arg headSha "$HEAD_SHA" \
+            --arg headRepository "$HEAD_REPOSITORY" \
+            --arg headRef "$HEAD_REF" \
+            --slurpfile logins ci-result/logins.json \
+            --arg json "$CHECK_JSON" \
+            --arg files "$CHECK_FILES" \
+            --arg filesSize "$CHECK_FILES_SIZE" \
+            --arg sanitize "$CHECK_SANITIZE" \
+            --arg sanitizerChanged "$SANITIZER_CHANGED" \
+            '{
+              version: 1,
+              pr: $pr,
+              headSha: $headSha,
+              headRepository: $headRepository,
+              headRef: $headRef,
+              logins: $logins[0],
+              checks: {
+                json: ($json == "success"),
+                files: ($files == "success"),
+                filesSize: ($filesSize == "success"),
+                sanitize: ($sanitize == "success"),
+                sanitizerChanged: ($sanitizerChanged == "true")
               }
-            }
+            }' > ci-result/result.json
+
+      - name: Upload result artifact
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanitize-result
+          path: ci-result/result.json
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Fail validation when necessary
+        if: always()
+        env:
+          CHECK_JSON: ${{ steps.check-json.outcome }}
+          CHECK_FILES: ${{ steps.check-files.outcome }}
+          CHECK_FILES_SIZE: ${{ steps.check-files-size.outcome }}
+          CHECK_SANITIZE: ${{ steps.check-sanitize.outcome }}
+          SANITIZER_CHANGED: ${{ steps.sanitizer-changes.outputs.changed }}
+        run: |
+          failed=false
+
+          if [ "$CHECK_JSON" != "success" ]; then
+            echo "::error::.json file is missing"
+            failed=true
+          fi
+
+          if [ "$CHECK_FILES" != "success" ]; then
+            echo "::error::A directory contains more than 20 sounds"
+            failed=true
+          fi
+
+          if [ "$CHECK_FILES_SIZE" != "success" ]; then
+            echo "::error::An MP3 file is over 1 MB"
+            failed=true
+          fi
+
+          if [ "$CHECK_SANITIZE" != "success" ]; then
+            echo "::error::The sanitizer failed"
+            failed=true
+          fi
+
+          if [ "$failed" = "true" ]; then
+            exit 1
+          fi
