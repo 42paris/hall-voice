@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "mp3": "jrossett/sound/"
+    },
+    "goodbye": {
+        "mp3": "jrossett/sound/"
+    }
+}
