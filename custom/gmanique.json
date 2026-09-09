@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "gmanique/in"
+	},
+	"goodbye":
+	{
+		"mp3": "gmanique/out"
+	}
+}
