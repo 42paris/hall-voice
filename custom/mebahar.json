@@ -1,6 +1,8 @@
 {
     "welcome": {
-        "mp3": "mebahar/kurenai-entry.mp3"
+        "mp3": "mebahar/"
     },
-    "goodbye": {}
+    "goodbye": {
+        "mp3": "mebahar/"
+    }
 }
