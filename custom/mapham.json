@@ -1,11 +1,9 @@
 {
-  "welcome":
-  {
-    "txt": "Marina passe et tu t'écartes, Marina domine et tu t'inclines",
-    "lang": "fr"
-  },
-  "goodbye":
-  {
-    "mp3": "mapham/out"
-  }
+    "welcome": {
+        "txt": "Marina passe et tu t'\u00e9cartes, Marina domine et tu t'inclines",
+        "lang": "fr"
+    },
+    "goodbye": {
+        "mp3": "mapham/out"
+    }
 }

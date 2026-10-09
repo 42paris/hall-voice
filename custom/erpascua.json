@@ -1,8 +1,8 @@
 {
-  "welcome": {
-    "mp3": "erpascua/in"
-  },
-  "goodbye": {
-    "mp3": "erpascua/out"
-  }
+    "welcome": {
+        "mp3": "erpascua/in"
+    },
+    "goodbye": {
+        "mp3": "erpascua/out"
+    }
 }

@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "flplace/in"
-  },
-  "goodbye":
-  {
-    "mp3": "flplace/out"
-  }
+    "welcome": {
+        "mp3": "flplace/in"
+    },
+    "goodbye": {
+        "mp3": "flplace/out"
+    }
 }

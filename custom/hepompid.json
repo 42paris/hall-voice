@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "hepompid/in"
-  },
-  "goodbye":
-  {
-    "mp3": "hepompid/out"
-  }
+    "welcome": {
+        "mp3": "hepompid/in"
+    },
+    "goodbye": {
+        "mp3": "hepompid/out"
+    }
 }

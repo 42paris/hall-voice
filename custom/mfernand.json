@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "mfernand/in"
-  },
-  "goodbye":
-  {
-    "mp3": "mfernand/out"
-  }
+    "welcome": {
+        "mp3": "mfernand/in"
+    },
+    "goodbye": {
+        "mp3": "mfernand/out"
+    }
 }
