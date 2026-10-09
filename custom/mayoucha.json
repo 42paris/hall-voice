@@ -1,8 +1,6 @@
 {
-    "welcome": {
-        "mp3": "mayoucha/in"
-    },
-    "goodbye": {
-        "mp3": "mayoucha/out"
-    }
+  "goodbye":
+  {
+    "mp3": "mayoucha/out"
+  }
 }
