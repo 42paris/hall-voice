@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "ocviller"
-  },
-  "goodbye":
-  {
-    "mp3": "ocviller"
-  }
+    "welcome": {
+        "mp3": "ocviller"
+    },
+    "goodbye": {
+        "mp3": "ocviller"
+    }
 }

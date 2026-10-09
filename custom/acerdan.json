@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "acerdan/in"
+    "welcome": {
+        "mp3": "acerdan/in"
     },
-    "goodbye":
-    {
-      "mp3": "acerdan/out"
+    "goodbye": {
+        "mp3": "acerdan/out"
     }
 }

@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "yguinio/in"
-  },
-  "goodbye":
-  {
-    "mp3": "yguinio/out"
-  }
+    "welcome": {
+        "mp3": "yguinio/in"
+    },
+    "goodbye": {
+        "mp3": "yguinio/out"
+    }
 }

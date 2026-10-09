@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "thomasbp/in"
-  },
-  "goodbye":
-  {
-    "mp3": "thomasbp/out"
-  }
+    "welcome": {
+        "mp3": "thomasbp/in"
+    },
+    "goodbye": {
+        "mp3": "thomasbp/out"
+    }
 }

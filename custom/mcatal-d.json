@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "mcatal-d/in"
+    "welcome": {
+        "mp3": "mcatal-d/in"
     },
-    "goodbye":
-    {
-      "mp3": "mcatal-d/out"
+    "goodbye": {
+        "mp3": "mcatal-d/out"
     }
-  }
+}

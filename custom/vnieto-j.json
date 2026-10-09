@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "vnieto-j/in"
-  },
-  "goodbye":
-  {
-    "mp3": "vnieto-j/out"
-  }
+    "welcome": {
+        "mp3": "vnieto-j/in"
+    },
+    "goodbye": {
+        "mp3": "vnieto-j/out"
+    }
 }
