@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "svan-de-/in"
-  },
-  "goodbye":
-  {
-    "mp3": "svan-de-/out"
-  }
+    "welcome": {
+        "mp3": "svan-de-/in"
+    },
+    "goodbye": {
+        "mp3": "svan-de-/out"
+    }
 }

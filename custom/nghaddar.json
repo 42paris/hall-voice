@@ -1,8 +1,8 @@
 {
-	"welcome":{
-		"mp3": "nghaddar/welcome"
-	},
-	"goodbye": {
-		"mp3": "nghaddar/goodbye"
-	}
+    "welcome": {
+        "mp3": "nghaddar/welcome"
+    },
+    "goodbye": {
+        "mp3": "nghaddar/goodbye"
+    }
 }

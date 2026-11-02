@@ -23,8 +23,9 @@ class Conf(object):
                 self.redis_host: str = config.get("redis", "host")
                 self.redis_port: int = int(config.get("redis", "port"))
                 self.redis_ttl: int = int(config.get("redis", "ttl"))
-                self.apiUID: str = config.get("42api", "uid")
-                self.apiSEC: str = config.get("42api", "secret")
+                self.client_id: str = config.get("ratatouille", "client_id")
+                self.client_secret: str = config.get("ratatouille", "client_secret")
+                self.realm: str = config.get("ratatouille", "realm") or "master"
                 self.welcome: list[tuple[str, str]] = []
                 self.goodbye: list[tuple[str, str]] = []
                 for welcomeMsg in config.items("welcome"):
@@ -68,8 +69,14 @@ class Conf(object):
     def getPurgeToken(self) -> str:
         return self.purgeToken
 
-    def getAPIkeys(self) -> list[str]:
-        return [self.apiUID, self.apiSEC]
+    def getRatatouilleClientId(self) -> str:
+        return self.client_id
+    
+    def getRatatouilleClientSecret(self) -> str:
+        return self.client_secret
+    
+    def getRatatouilleRealm(self) -> str:
+        return self.realm
 
     def getWelcome(self) -> list[tuple[str, str]]:
         return self.welcome

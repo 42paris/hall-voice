@@ -1,8 +1,8 @@
 {
-  "welcome": {
-    "mp3": "frrusso/in"
-  },
-  "goodbye": {
-    "mp3": "frrusso/out"
-  }
+    "welcome": {
+        "mp3": "frrusso/in"
+    },
+    "goodbye": {
+        "mp3": "frrusso/out"
+    }
 }

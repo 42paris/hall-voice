@@ -1,8 +1,8 @@
 {
-  "welcome": {
-    "txt": "Salut la Best"
-  },
-  "goodbye": {
-    "txt": "Au revoir la Best"
-  }
+    "welcome": {
+        "txt": "Salut la Best"
+    },
+    "goodbye": {
+        "txt": "Au revoir la Best"
+    }
 }
